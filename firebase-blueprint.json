@@ -1,0 +1,146 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Item listed by vendors on Digital Bazar Peshawar",
+      "type": "object",
+      "properties": {
+        "titleEn": { "type": "string" },
+        "titleUr": { "type": "string" },
+        "descriptionEn": { "type": "string" },
+        "descriptionUr": { "type": "string" },
+        "price": { "type": "number" },
+        "originalPrice": { "type": "number" },
+        "category": { "type": "string" },
+        "zone": { "type": "string" },
+        "vendorId": { "type": "string" },
+        "vendorName": { "type": "string" },
+        "vendorPhone": { "type": "string" },
+        "images": { "type": "array" },
+        "stock": { "type": "number" },
+        "rating": { "type": "number" },
+        "reviewCount": { "type": "number" },
+        "isFeatured": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["titleEn", "price", "category", "zone", "vendorId"]
+    },
+    "Vendor": {
+      "title": "Vendor",
+      "description": "Registered shopkeeper or vendor profile",
+      "type": "object",
+      "properties": {
+        "shopNameEn": { "type": "string" },
+        "shopNameUr": { "type": "string" },
+        "ownerName": { "type": "string" },
+        "phone": { "type": "string" },
+        "whatsapp": { "type": "string" },
+        "email": { "type": "string" },
+        "zone": { "type": "string" },
+        "marketAddressEn": { "type": "string" },
+        "marketAddressUr": { "type": "string" },
+        "isVerified": { "type": "boolean" },
+        "rating": { "type": "number" },
+        "joinedDate": { "type": "string" }
+      },
+      "required": ["shopNameEn", "ownerName", "phone", "zone"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer purchase order in Peshawar local delivery system",
+      "type": "object",
+      "properties": {
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "customerEmail": { "type": "string" },
+        "address": { "type": "string" },
+        "zone": { "type": "string" },
+        "landmark": { "type": "string" },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "shippingFee": { "type": "number" },
+        "discount": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "paymentTransactionId": { "type": "string" },
+        "status": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["customerName", "customerPhone", "address", "zone", "totalAmount", "status"]
+    },
+    "Rider": {
+      "title": "Rider",
+      "description": "Delivery courier rider in Peshawar zones",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "vehicleNo": { "type": "string" },
+        "assignedZone": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["name", "phone", "vehicleNo", "assignedZone"]
+    },
+    "User": {
+      "title": "User",
+      "description": "Registered customer, vendor, rider, or admin account",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "password": { "type": "string" },
+        "role": { "type": "string" },
+        "vendorId": { "type": "string" },
+        "shopNameEn": { "type": "string" },
+        "shopNameUr": { "type": "string" },
+        "zone": { "type": "string" },
+        "vehicleNo": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "role"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Customer feedback and review on product",
+      "type": "object",
+      "properties": {
+        "productId": { "type": "string" },
+        "userName": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "date": { "type": "string" },
+        "verifiedPurchase": { "type": "boolean" }
+      },
+      "required": ["productId", "userName", "rating", "comment"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Marketplace products catalog"
+    },
+    "/vendors/{vendorId}": {
+      "schema": "Vendor",
+      "description": "Approved and registered marketplace vendors"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Customer marketplace orders"
+    },
+    "/riders/{riderId}": {
+      "schema": "Rider",
+      "description": "Marketplace delivery riders"
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Registered user accounts (customers, vendors, riders, admin)"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Customer reviews and feedback"
+    }
+  }
+}

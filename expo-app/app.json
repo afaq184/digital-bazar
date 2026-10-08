@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "Digital Bazar Peshawar",
+    "slug": "digital-bazar-peshawar",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#0F0F0F",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.digitalbazar.peshawar",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Digital Bazar requires GPS location for delivery and rider tracking."
+      }
+    },
+    "android": {
+      "package": "com.digitalbazar.peshawar",
+      "permissions": [
+        "INTERNET",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION"
+      ]
+    }
+  }
+}

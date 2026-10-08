@@ -1,0 +1,6 @@
+{
+  "name": "Digital Bazar - Peshawar Local Marketplace",
+  "description": "Hyper-local e-commerce marketplace for Peshawar connecting customers with local markets like Kissa Khwani, Namak Mandi, Saddar, and Karkhano with doorstep delivery, bilingual Urdu/English interface, and WhatsApp ordering.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
