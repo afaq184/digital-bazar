@@ -81,20 +81,20 @@ export const Header: React.FC = () => {
       )}
 
       {/* Upper Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between gap-1.5 sm:gap-4">
         {/* Brand Logo */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <button
             onClick={() => setActiveView('store')}
-            className="flex items-center gap-2 group text-left"
+            className="flex items-center gap-1.5 sm:gap-2 group text-left"
           >
-            <div className="w-10 h-10 rounded-lg bg-[#C5A059]/10 border border-[#C5A059]/30 flex items-center justify-center group-hover:bg-[#C5A059]/20 transition-all">
-              <Store className="w-5 h-5 text-[#C5A059]" />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-[#C5A059]/10 border border-[#C5A059]/30 flex items-center justify-center group-hover:bg-[#C5A059]/20 transition-all shrink-0">
+              <Store className="w-4 h-4 sm:w-5 sm:h-5 text-[#C5A059]" />
             </div>
             <div>
-              <span className="font-serif-display font-bold text-2xl tracking-wide text-white flex items-center gap-1.5">
+              <span className="font-serif-display font-bold text-lg sm:text-2xl tracking-wide text-white flex items-center gap-1 sm:gap-1.5">
                 {language === 'ur' ? 'ڈجیٹل بازار' : 'Digital Bazar'}
-                <span className="text-[10px] uppercase font-sans tracking-widest px-2 py-0.5 rounded bg-[#C5A059]/15 text-[#C5A059] border border-[#C5A059]/30">
+                <span className="text-[9px] sm:text-[10px] uppercase font-sans tracking-wider px-1.5 py-0.5 rounded bg-[#C5A059]/15 text-[#C5A059] border border-[#C5A059]/30 hidden xs:inline-block">
                   {language === 'ur' ? 'پشاور' : 'Peshawar'}
                 </span>
               </span>
@@ -267,21 +267,21 @@ export const Header: React.FC = () => {
         )}
 
         {/* Right Action Icons & Controls */}
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           {/* Language Switcher */}
           <button
             onClick={() => setLanguage(language === 'en' ? 'ur' : 'en')}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#151515] border border-white/10 hover:border-[#C5A059]/40 text-xs font-medium text-neutral-200 transition-all"
+            className="flex items-center gap-1 sm:gap-1.5 px-2 py-1.5 sm:px-2.5 sm:py-1.5 rounded-lg bg-[#151515] border border-white/10 hover:border-[#C5A059]/40 text-xs font-medium text-neutral-200 transition-all shrink-0"
             title="Switch Language / زبان تبدیل کریں"
           >
-            <Globe className="w-3.5 h-3.5 text-[#C5A059]" />
-            <span>{language === 'en' ? 'اردو' : 'English'}</span>
+            <Globe className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
+            <span className="text-[11px] sm:text-xs font-semibold">{language === 'en' ? 'اردو' : 'EN'}</span>
           </button>
 
           {/* Order Tracking Button */}
           <button
             onClick={() => setIsTrackOrderOpen(true)}
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#151515] border border-white/10 hover:border-[#C5A059]/40 text-xs font-medium text-neutral-200 transition-all"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#151515] border border-white/10 hover:border-[#C5A059]/40 text-xs font-medium text-neutral-200 transition-all shrink-0"
           >
             <Truck className="w-4 h-4 text-[#C5A059]" />
             <span className="hidden md:inline">{t.trackOrder}</span>
@@ -290,24 +290,42 @@ export const Header: React.FC = () => {
           {/* Cart Icon */}
           <button
             onClick={() => setIsCartOpen(true)}
-            className="relative p-2 rounded-lg bg-[#C5A059]/10 border border-[#C5A059]/30 text-[#C5A059] hover:bg-[#C5A059]/20 transition-all"
+            className="relative p-1.5 sm:p-2 rounded-lg bg-[#C5A059]/10 border border-[#C5A059]/30 text-[#C5A059] hover:bg-[#C5A059]/20 transition-all shrink-0"
             aria-label="Shopping Cart"
           >
-            <ShoppingBag className="w-5 h-5" />
+            <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5" />
             {cartTotalCount > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 bg-[#C5A059] text-black font-black text-[10px] min-w-[18px] h-[18px] rounded-full flex items-center justify-center px-1 shadow-md">
+              <span className="absolute -top-1.5 -right-1.5 bg-[#C5A059] text-black font-black text-[9px] sm:text-[10px] min-w-[16px] h-[16px] sm:min-w-[18px] sm:h-[18px] rounded-full flex items-center justify-center px-0.5 sm:px-1 shadow-md">
                 {cartTotalCount}
               </span>
             )}
           </button>
 
           {/* User Account / Auth Dropdown */}
-          <div className="relative">
+          <div className="relative shrink-0">
             {user ? (
-              <div className="flex items-center gap-1.5">
+              <div>
+                {/* Mobile version: compact, never clips or overflows */}
                 <button
                   onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#151515] border border-white/10 hover:border-[#C5A059]/40 text-xs font-medium text-neutral-200 transition-all"
+                  className="sm:hidden flex items-center gap-1 px-2 py-1.5 rounded-lg bg-[#151515] border border-white/10 hover:border-[#C5A059]/40 text-xs font-medium text-neutral-200 transition-all shrink-0"
+                  title={`${user.name} (${user.role})`}
+                >
+                  <UserIcon className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
+                  <span className="font-bold max-w-[45px] truncate text-[11px]">
+                    {user.name.split(' ')[0]}
+                  </span>
+                  <span
+                    className="w-1.5 h-1.5 rounded-full bg-[#C5A059] shrink-0"
+                    title={`Role: ${user.role}`}
+                  />
+                  <ChevronDown className="w-3 h-3 text-neutral-400 shrink-0" />
+                </button>
+
+                {/* Tablet / Desktop version: full title & role badge */}
+                <button
+                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                  className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#151515] border border-white/10 hover:border-[#C5A059]/40 text-xs font-medium text-neutral-200 transition-all shrink-0"
                 >
                   <UserIcon className="w-4 h-4 text-[#C5A059]" />
                   <span className="font-bold max-w-[100px] truncate">{user.name.split(' ')[0]}</span>
@@ -318,10 +336,10 @@ export const Header: React.FC = () => {
                 </button>
 
                 {isUserMenuOpen && (
-                  <div className="absolute right-0 top-full mt-2 w-56 rounded-xl bg-[#151515] border border-white/10 shadow-2xl p-2 z-50 space-y-1 text-xs">
+                  <div className="absolute right-0 top-full mt-2 w-56 max-w-[calc(100vw-1.5rem)] rounded-xl bg-[#151515] border border-white/10 shadow-2xl p-2 z-50 space-y-1 text-xs">
                     <div className="p-2 border-b border-white/10">
                       <p className="font-bold text-white truncate">{user.name}</p>
-                      <p className="text-[11px] text-neutral-400 truncate">{user.email}</p>
+                      <p className="text-[11px] text-neutral-400 truncate">{user.email || user.phone}</p>
                       <span className="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-[#C5A059]/10 text-[#C5A059]">
                         Role: {user.role}
                       </span>
@@ -394,22 +412,32 @@ export const Header: React.FC = () => {
                 )}
               </div>
             ) : (
-              <button
-                onClick={() => setIsAuthModalOpen(true)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#C5A059] hover:bg-[#D4AF37] text-black font-extrabold text-xs transition-all shadow-sm"
-              >
-                <UserIcon className="w-4 h-4" />
-                <span>{t.login}</span>
-              </button>
+              <>
+                <button
+                  onClick={() => setIsAuthModalOpen(true)}
+                  className="sm:hidden flex items-center gap-1 px-2 py-1.5 rounded-lg bg-[#C5A059] hover:bg-[#D4AF37] text-black font-extrabold text-xs transition-all shadow-sm shrink-0"
+                >
+                  <UserIcon className="w-3.5 h-3.5" />
+                  <span className="text-[11px]">{t.login}</span>
+                </button>
+                <button
+                  onClick={() => setIsAuthModalOpen(true)}
+                  className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#C5A059] hover:bg-[#D4AF37] text-black font-extrabold text-xs transition-all shadow-sm shrink-0"
+                >
+                  <UserIcon className="w-4 h-4" />
+                  <span>{t.login}</span>
+                </button>
+              </>
             )}
           </div>
 
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-neutral-300 hover:text-white"
+            className="md:hidden p-1.5 sm:p-2 text-neutral-300 hover:text-white shrink-0"
+            aria-label="Toggle navigation menu"
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>

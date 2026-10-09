@@ -86,12 +86,12 @@ function MainAppContent() {
   const featuredProducts = products.filter((p) => p.isFeatured);
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans selection:bg-emerald-500 selection:text-slate-950">
+    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans selection:bg-emerald-500 selection:text-slate-950 w-full overflow-x-hidden">
       {/* Primary Navigation Header */}
       <Header />
 
       {/* Dynamic Main Body Content Based on Active View and Role Access Control */}
-      <main className="flex-1">
+      <main className="flex-1 w-full max-w-full overflow-x-hidden">
         {activeView === 'admin' && user?.role === 'admin' ? (
           <AdminDashboard />
         ) : activeView === 'vendor' && (user?.role === 'vendor' || user?.role === 'admin') ? (
@@ -102,33 +102,33 @@ function MainAppContent() {
           <CustomerDashboard onBackToStore={() => setActiveView('store')} />
         ) : (
           /* Customer Store View */
-          <div className="space-y-8 sm:space-y-12 pb-24 md:pb-16">
+          <div className="space-y-8 sm:space-y-12 pb-24 md:pb-16 w-full overflow-x-hidden">
             {/* Hero Section */}
-            <div className="relative overflow-hidden bg-slate-900 border-b border-slate-800 py-12 md:py-16">
+            <div className="relative overflow-hidden bg-slate-900 border-b border-slate-800 py-8 sm:py-12 md:py-16">
               {/* Background Glow Accents */}
               <div className="absolute -top-24 -left-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
               <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
               <div className="max-w-7xl mx-auto px-4 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                  <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+                  <div className="lg:col-span-7 space-y-4 sm:space-y-6 text-center lg:text-left">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
                       <Sparkles className="w-3.5 h-3.5" />
                       <span>{t.verifiedLocalVendors}</span>
                     </div>
 
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
+                    <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
                       {t.heroTitle}
                     </h1>
 
-                    <p className="text-sm md:text-base text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                    <p className="text-xs sm:text-sm md:text-base text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                       {t.heroSubtitle}
                     </p>
 
-                    <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+                    <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 pt-2">
                       <a
                         href="#catalog"
-                        className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm flex items-center gap-2 shadow-lg shadow-emerald-500/15 transition-all"
+                        className="px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 shadow-lg shadow-emerald-500/15 transition-all"
                       >
                         <span>{t.shopNow}</span>
                         <ArrowRight className="w-4 h-4" />
@@ -139,7 +139,7 @@ function MainAppContent() {
                           setRole('vendor');
                           setIsAuthModalOpen(true);
                         }}
-                        className="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm border border-slate-700 flex items-center gap-2 transition-all"
+                        className="px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm border border-slate-700 flex items-center gap-1.5 sm:gap-2 transition-all"
                       >
                         <Store className="w-4 h-4 text-emerald-400" />
                         <span>{t.becomeVendor}</span>
@@ -147,7 +147,7 @@ function MainAppContent() {
 
                       <button
                         onClick={() => setIsTrackOrderOpen(true)}
-                        className="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-400 font-bold text-sm border border-slate-800 flex items-center gap-2 transition-all cursor-pointer"
+                        className="px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-400 font-bold text-xs sm:text-sm border border-slate-800 flex items-center gap-1.5 sm:gap-2 transition-all cursor-pointer"
                       >
                         <Truck className="w-4 h-4" />
                         <span>{t.trackOrder}</span>
@@ -155,26 +155,26 @@ function MainAppContent() {
 
                       <button
                         onClick={() => setIsAddZoneModalOpen(true)}
-                        className="px-6 py-3 rounded-xl bg-slate-900 hover:bg-[#1A1A1A] text-[#C5A059] font-bold text-sm border border-[#C5A059]/40 flex items-center gap-2 transition-all cursor-pointer shadow-lg"
+                        className="px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-slate-900 hover:bg-[#1A1A1A] text-[#C5A059] font-bold text-xs sm:text-sm border border-[#C5A059]/40 flex items-center gap-1.5 sm:gap-2 transition-all cursor-pointer shadow-lg"
                       >
                         <MapPin className="w-4 h-4 text-[#C5A059]" />
-                        <span>{language === 'ur' ? '+ اپنی مرضی کا بازار شامل کریں' : '+ Add Custom Bazaar'}</span>
+                        <span>{language === 'ur' ? '+ نیا بازار' : '+ Add Bazaar'}</span>
                       </button>
                     </div>
 
                     {/* Quick Trust Badges */}
-                    <div className="grid grid-cols-3 gap-2 pt-6 border-t border-slate-800/80 max-w-lg mx-auto lg:mx-0 text-center text-xs text-slate-400">
+                    <div className="grid grid-cols-3 gap-2 pt-4 sm:pt-6 border-t border-slate-800/80 max-w-lg mx-auto lg:mx-0 text-center text-[11px] sm:text-xs text-slate-400">
                       <div className="p-2 rounded-xl bg-slate-950/60 border border-slate-800/80">
-                        <strong className="block text-white text-sm">9 Bazaars</strong>
-                        <span>Peshawar Coverage</span>
+                        <strong className="block text-white text-xs sm:text-sm">{zones.length} Bazaars</strong>
+                        <span>Peshawar Markets</span>
                       </div>
                       <div className="p-2 rounded-xl bg-slate-950/60 border border-slate-800/80">
-                        <strong className="block text-emerald-400 text-sm">Same-Day</strong>
+                        <strong className="block text-emerald-400 text-xs sm:text-sm">Same-Day</strong>
                         <span>Doorstep Delivery</span>
                       </div>
                       <div className="p-2 rounded-xl bg-slate-950/60 border border-slate-800/80">
-                        <strong className="block text-white text-sm">COD & Wallet</strong>
-                        <span>EasyPaisa / JazzCash</span>
+                        <strong className="block text-white text-xs sm:text-sm">COD & Wallet</strong>
+                        <span>EasyPaisa/JazzCash</span>
                       </div>
                     </div>
                   </div>
@@ -230,21 +230,21 @@ function MainAppContent() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-10 gap-2 sm:gap-2.5">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-10 gap-1.5 sm:gap-2.5">
                 {zones.map((zone) => {
                   const isSelected = selectedZone === zone.id;
                   return (
                     <button
                       key={zone.id}
                       onClick={() => setSelectedZone(isSelected ? 'all' : zone.id)}
-                      className={`p-2.5 sm:p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-between cursor-pointer ${
+                      className={`p-2 sm:p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-between cursor-pointer ${
                         isSelected
                           ? 'bg-emerald-500 text-slate-950 font-bold border-emerald-400 shadow-lg shadow-emerald-500/10'
                           : 'bg-slate-900 hover:bg-slate-850 border-slate-800 text-slate-300 hover:border-slate-700'
                       }`}
                     >
-                      <MapPin className={`w-3.5 h-3.5 sm:w-4 sm:h-4 mb-1 ${isSelected ? 'text-slate-950' : 'text-emerald-400'}`} />
-                      <span className="text-xs font-semibold leading-tight line-clamp-1">
+                      <MapPin className={`w-3.5 h-3.5 sm:w-4 sm:h-4 mb-1 shrink-0 ${isSelected ? 'text-slate-950' : 'text-emerald-400'}`} />
+                      <span className="text-[10px] sm:text-xs font-semibold leading-tight line-clamp-1 w-full truncate">
                         {language === 'ur' ? zone.nameUr : zone.nameEn.split(' ')[0]} {zone.isCustom ? '★' : ''}
                       </span>
                     </button>
@@ -255,11 +255,11 @@ function MainAppContent() {
                 <button
                   type="button"
                   onClick={() => setIsAddZoneModalOpen(true)}
-                  className="p-2.5 sm:p-3 rounded-xl border border-dashed border-[#C5A059]/60 hover:border-[#C5A059] bg-[#C5A059]/10 hover:bg-[#C5A059]/20 text-[#C5A059] text-center transition-all flex flex-col items-center justify-between cursor-pointer group shadow"
+                  className="p-2 sm:p-3 rounded-xl border border-dashed border-[#C5A059]/60 hover:border-[#C5A059] bg-[#C5A059]/10 hover:bg-[#C5A059]/20 text-[#C5A059] text-center transition-all flex flex-col items-center justify-between cursor-pointer group shadow"
                   title={language === 'ur' ? 'اپنی مرضی کا نیا بازار شامل کریں' : 'Add your custom Peshawar bazaar'}
                 >
-                  <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4 mb-1 group-hover:scale-125 transition-transform" />
-                  <span className="text-xs font-bold leading-tight line-clamp-1">
+                  <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4 mb-1 group-hover:scale-125 transition-transform shrink-0" />
+                  <span className="text-[10px] sm:text-xs font-bold leading-tight line-clamp-1 w-full truncate">
                     {language === 'ur' ? 'نیا بازار +' : '+ Add Bazaar'}
                   </span>
                 </button>

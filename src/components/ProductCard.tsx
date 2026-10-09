@@ -73,15 +73,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         {/* Discount Badge */}
         {discountPercent > 0 && (
-          <span className="absolute top-3 left-3 bg-[#C5A059] text-black font-extrabold text-[10px] uppercase tracking-wider px-2 py-0.5 rounded shadow">
+          <span className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-[#C5A059] text-black font-extrabold text-[9px] sm:text-[10px] uppercase tracking-wider px-1.5 sm:px-2 py-0.5 rounded shadow">
             {discountPercent}% {t.discount}
           </span>
         )}
 
         {/* Zone Badge */}
-        <span className="absolute bottom-3 left-3 bg-[#0A0A0A]/85 backdrop-blur-md text-[#C5A059] border border-white/10 font-medium text-[10px] uppercase tracking-wider px-2 py-0.5 rounded flex items-center gap-1 shadow">
-          <MapPin className="w-3 h-3 text-[#C5A059] shrink-0" />
-          <span className="truncate max-w-[130px]">{zoneName}</span>
+        <span className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 bg-[#0A0A0A]/85 backdrop-blur-md text-[#C5A059] border border-white/10 font-medium text-[9px] sm:text-[10px] uppercase tracking-wider px-1.5 sm:px-2 py-0.5 rounded flex items-center gap-1 shadow">
+          <MapPin className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#C5A059] shrink-0" />
+          <span className="truncate max-w-[90px] sm:max-w-[130px]">{zoneName}</span>
         </span>
 
         {/* Wishlist Button */}
@@ -90,7 +90,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             e.stopPropagation();
             toggleWishlist(product.id);
           }}
-          className={`absolute top-3 right-3 p-2 rounded-lg backdrop-blur-md border transition-all ${
+          className={`absolute top-2 right-2 sm:top-3 sm:right-3 p-1.5 sm:p-2 rounded-lg backdrop-blur-md border transition-all ${
             isWishlisted
               ? 'bg-rose-500/20 border-rose-500/40 text-rose-400'
               : 'bg-[#0A0A0A]/60 border-white/10 text-neutral-300 hover:text-white hover:bg-[#151515]'

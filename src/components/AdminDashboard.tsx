@@ -185,10 +185,10 @@ export const AdminDashboard: React.FC = () => {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex items-center gap-2 border-b border-white/10 pb-3">
+      <div className="flex items-center gap-2 border-b border-white/10 pb-3 overflow-x-auto no-scrollbar flex-nowrap sm:flex-wrap">
         <button
           onClick={() => setActiveTab('vendors')}
-          className={`px-4 py-2 rounded text-xs font-bold uppercase tracking-wider transition-all ${
+          className={`px-3 sm:px-4 py-2 rounded text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap shrink-0 ${
             activeTab === 'vendors'
               ? 'bg-[#C5A059] text-black shadow-md'
               : 'bg-[#151515] text-neutral-300 hover:text-white border border-white/10'
@@ -198,7 +198,7 @@ export const AdminDashboard: React.FC = () => {
         </button>
         <button
           onClick={() => setActiveTab('products')}
-          className={`px-4 py-2 rounded text-xs font-bold uppercase tracking-wider transition-all ${
+          className={`px-3 sm:px-4 py-2 rounded text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap shrink-0 ${
             activeTab === 'products'
               ? 'bg-[#C5A059] text-black shadow-md'
               : 'bg-[#151515] text-neutral-300 hover:text-white border border-white/10'
@@ -208,34 +208,34 @@ export const AdminDashboard: React.FC = () => {
         </button>
         <button
           onClick={() => setActiveTab('orders')}
-          className={`px-4 py-2 rounded text-xs font-bold uppercase tracking-wider transition-all ${
+          className={`px-3 sm:px-4 py-2 rounded text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap shrink-0 ${
             activeTab === 'orders'
               ? 'bg-[#C5A059] text-black shadow-md'
               : 'bg-[#151515] text-neutral-300 hover:text-white border border-white/10'
           }`}
         >
-          All Orders & Rider Dispatch ({orders.length})
+          All Orders & Riders ({orders.length})
         </button>
         <button
           onClick={() => setActiveTab('zones')}
-          className={`px-4 py-2 rounded text-xs font-bold uppercase tracking-wider transition-all ${
+          className={`px-3 sm:px-4 py-2 rounded text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap shrink-0 ${
             activeTab === 'zones'
               ? 'bg-[#C5A059] text-black shadow-md'
               : 'bg-[#151515] text-neutral-300 hover:text-white border border-white/10'
           }`}
         >
-          Sales Analytics by Zone
+          Sales Analytics
         </button>
         <button
           onClick={() => setActiveTab('database')}
-          className={`px-4 py-2 rounded text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 ${
+          className={`px-3 sm:px-4 py-2 rounded text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
             activeTab === 'database'
               ? 'bg-emerald-500 text-black shadow-md font-black'
               : 'bg-[#151515] text-emerald-400 hover:text-white border border-emerald-500/30'
           }`}
         >
           <Database className="w-3.5 h-3.5" />
-          <span>Firebase Cloud Database (Live)</span>
+          <span>Firebase Database</span>
         </button>
       </div>
 

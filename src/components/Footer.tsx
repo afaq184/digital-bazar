@@ -134,7 +134,7 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Copyright Bar */}
-      <div className="border-t border-white/5 bg-[#080808] py-4 px-4 text-center text-[11px] text-neutral-500">
+      <div className="border-t border-white/5 bg-[#080808] py-4 px-4 pb-24 md:pb-4 text-center text-[11px] text-neutral-500">
         <p>
           © 2025–2026 Digital Bazar: A Local Marketplace for Peshawar. All rights reserved.
         </p>
